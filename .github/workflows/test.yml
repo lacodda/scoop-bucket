@@ -31,7 +31,8 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          scoop bucket add lacodda $env:GITHUB_WORKSPACE
+          # From GitHub, as a user adds it: Scoop takes a bucket only from a git URL.
+          scoop bucket add lacodda "https://github.com/$env:GITHUB_REPOSITORY"
           $packages = Get-Content packages.json -Raw | ConvertFrom-Json
           foreach ($package in $packages) {
             scoop install "lacodda/$($package.name)"
