@@ -1,0 +1,11 @@
+[
+  {
+    "name": "turnout",
+    "repo": "lacodda/turnout",
+    "desc": "Point local apps at any backend stand, keep servers and secrets, and deploy",
+    "homepage": "https://lacodda.github.io/turnout/",
+    "license": "MIT",
+    "bin": "turnout",
+    "aliases": ["tn"]
+  }
+]

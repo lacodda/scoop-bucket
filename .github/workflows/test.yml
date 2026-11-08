@@ -1,0 +1,45 @@
+name: Test
+
+# Every manifest installed the way a user installs it - the bucket added,
+# `scoop install NAME` - and run, with its aliases.
+on:
+  push:
+    branches: [main]
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    runs-on: windows-latest
+    steps:
+      # main, not the commit that started the run: called from Update, the
+      # manifests to prove are the ones it has just pushed.
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - name: Install Scoop
+        shell: pwsh
+        run: |
+          # The runner is an administrator, which Scoop refuses unless told.
+          Invoke-RestMethod https://get.scoop.sh -OutFile install.ps1
+          .\install.ps1 -RunAsAdmin
+          Add-Content $env:GITHUB_PATH "$env:USERPROFILE\scoop\shims"
+      - name: Install every manifest and run it
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          scoop bucket add lacodda $env:GITHUB_WORKSPACE
+          $packages = Get-Content packages.json -Raw | ConvertFrom-Json
+          foreach ($package in $packages) {
+            scoop install "lacodda/$($package.name)"
+            if ($LASTEXITCODE -ne 0) { throw "scoop install $($package.name) failed" }
+            foreach ($program in @($package.bin) + @($package.aliases)) {
+              if (-not $program) { continue }
+              $version = & $program --version
+              if ($LASTEXITCODE -ne 0) { throw "$program --version failed" }
+              "${program}: $version"
+            }
+          }

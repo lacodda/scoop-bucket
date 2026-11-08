@@ -1,0 +1,47 @@
+name: Update
+
+# The manifests follow the releases by themselves: every few hours, and on
+# demand, each package's newest release is read and its manifest written again.
+# The bucket pushes to itself with its own token, so no repository it packages
+# needs a token for this one.
+on:
+  schedule:
+    - cron: '47 */4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.update.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Write the manifests from the newest releases
+        id: update
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 tools/update.py
+      - name: Commit what changed
+        if: steps.update.outputs.changed != ''
+        env:
+          CHANGED: ${{ steps.update.outputs.changed }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bucket
+          git commit -m "feat: ${CHANGED}"
+          git push
+
+  # A push made with the workflow's own token starts no other workflow, so the
+  # install is proven here, against what was just pushed.
+  test:
+    needs: update
+    if: needs.update.outputs.changed != ''
+    uses: ./.github/workflows/test.yml

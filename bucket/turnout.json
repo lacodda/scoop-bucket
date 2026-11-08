@@ -1,0 +1,31 @@
+{
+    "version": "0.27.0",
+    "description": "Point local apps at any backend stand, keep servers and secrets, and deploy",
+    "homepage": "https://lacodda.github.io/turnout/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/lacodda/turnout/releases/download/v0.27.0/turnout-v0.27.0-x86_64-pc-windows-msvc.zip",
+            "hash": "bb3a174e6b75b7a6385134b40504dd8595fef4c49670686ba949ba37c38b8de8",
+            "extract_dir": "turnout-v0.27.0-x86_64-pc-windows-msvc"
+        }
+    },
+    "bin": [
+        "turnout.exe",
+        [
+            "turnout.exe",
+            "tn"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/lacodda/turnout"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/lacodda/turnout/releases/download/v$version/turnout-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "turnout-v$version-x86_64-pc-windows-msvc"
+            }
+        }
+    }
+}
