@@ -1,0 +1,27 @@
+{
+    "version": "0.10.0",
+    "description": "Sync relay for local-first apps: it keeps changes in order and cannot read them",
+    "homepage": "https://lacodda.github.io/efema/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/lacodda/efema/releases/download/v0.10.0/efema-server-v0.10.0-x86_64-pc-windows-msvc.zip",
+            "hash": "62d955c8c8c540bc0f3c2cf39221e6983e491c4d29179dcdbbe10d9d5d293cb4",
+            "extract_dir": "efema-server-v0.10.0-x86_64-pc-windows-msvc"
+        }
+    },
+    "bin": [
+        "efema-server.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/lacodda/efema"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/lacodda/efema/releases/download/v$version/efema-server-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "efema-server-v$version-x86_64-pc-windows-msvc"
+            }
+        }
+    }
+}
