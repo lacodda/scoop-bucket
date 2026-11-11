@@ -15,5 +15,13 @@
     "homepage": "https://lyrn.lacodda.com",
     "license": "MIT",
     "bin": "lyrn"
+  },
+  {
+    "name": "efema-server",
+    "repo": "lacodda/efema",
+    "desc": "Sync relay for local-first apps: it keeps changes in order and cannot read them",
+    "homepage": "https://lacodda.github.io/efema/",
+    "license": "MIT",
+    "bin": "efema-server"
   }
 ]
