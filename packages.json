@@ -23,5 +23,14 @@
     "homepage": "https://lacodda.github.io/efema/",
     "license": "MIT",
     "bin": "efema-server"
+  },
+  {
+    "name": "kasl",
+    "repo": "lacodda/kasl",
+    "desc": "Work activity tracker: workday and break detection, tasks and reports",
+    "homepage": "https://kasl.lacodda.com",
+    "license": "MIT",
+    "bin": "kasl",
+    "aliases": ["ka"]
   }
 ]

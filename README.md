@@ -5,11 +5,13 @@ Scoop manifests for the programs of the lacodda line.
 ```powershell
 scoop bucket add lacodda https://github.com/lacodda/scoop-bucket
 scoop install turnout
+scoop install kasl
 ```
 
 | Manifest | What it is |
 | --- | --- |
 | [`turnout`](https://github.com/lacodda/turnout) | A developer's switchyard: point local apps at any backend stand, keep servers and secrets at hand, build and deploy from any directory. Installs `turnout` and the alias `tn`. |
+| [`kasl`](https://github.com/lacodda/kasl) | Work activity tracker CLI: automatic workday and break detection, task management with Jira/GitLab integration, productivity reports and exports. Installs `kasl`, the alias `ka` and the GitLab plugin that ships with it. |
 
 Each manifest installs the release's own Windows x86-64 archive, checked against the SHA-256 written in it.
 
