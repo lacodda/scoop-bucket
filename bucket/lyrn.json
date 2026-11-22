@@ -1,13 +1,13 @@
 {
-    "version": "2.21.0",
+    "version": "2.22.1",
     "description": "Start a new web application on the lacodda line's stack with one command",
     "homepage": "https://lyrn.lacodda.com",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/lacodda/lyrn/releases/download/v2.21.0/lyrn-v2.21.0-x86_64-pc-windows-msvc.zip",
-            "hash": "3a29f6fd4081a0283a427f413afd299fd5365c4ea19bbd622d51948b560799d3",
-            "extract_dir": "lyrn-v2.21.0-x86_64-pc-windows-msvc"
+            "url": "https://github.com/lacodda/lyrn/releases/download/v2.22.1/lyrn-v2.22.1-x86_64-pc-windows-msvc.zip",
+            "hash": "a96083381ed300e26ad27c2cbed4a9323d974a680c645f555dfe4970d647cd95",
+            "extract_dir": "lyrn-v2.22.1-x86_64-pc-windows-msvc"
         }
     },
     "bin": [
