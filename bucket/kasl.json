@@ -1,13 +1,13 @@
 {
-    "version": "1.24.0",
+    "version": "1.25.0",
     "description": "Work activity tracker: workday and break detection, tasks and reports",
     "homepage": "https://kasl.lacodda.com",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/lacodda/kasl/releases/download/v1.24.0/kasl-v1.24.0-x86_64-pc-windows-msvc.zip",
-            "hash": "9dc6edd5b440265a6f3eaeb71cbcb6c8358cda58b25331f29b846275ceda6348",
-            "extract_dir": "kasl-v1.24.0-x86_64-pc-windows-msvc"
+            "url": "https://github.com/lacodda/kasl/releases/download/v1.25.0/kasl-v1.25.0-x86_64-pc-windows-msvc.zip",
+            "hash": "ce47e183709a6ac8ee82052f5533110640f894c1fb34484bf153f2b8d993d0d1",
+            "extract_dir": "kasl-v1.25.0-x86_64-pc-windows-msvc"
         }
     },
     "bin": [
